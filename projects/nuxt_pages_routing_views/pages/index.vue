@@ -14,29 +14,40 @@ export default{
   components: {
     PostList
   },
-  data(){
-    return {
-      loadedPosts: [
-        { 
-          id: '1', 
-          title: 'First Post', 
-          previewText: 'This is our first post!', 
-          thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
-        },
-        { 
-          id: '2', 
-          title: 'Second Post', 
-          previewText: 'This is our second post!', 
-          thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
-        },
-        { 
-          id: '3', 
-          title: 'Third Post', 
-          previewText: 'This is our third post!', 
-          thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
-        }
-      ]
-    }
+  asyncData(context, callback){
+    setTimeout(() => {
+      callback(null, {loadedPosts: [
+          { 
+            id: '1', 
+            title: 'First Post', 
+            previewText: 'This is our first post!', 
+            thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
+          },
+          { 
+            id: '2', 
+            title: 'Second Post', 
+            previewText: 'This is our second post!', 
+            thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
+          },
+          { 
+            id: '3', 
+            title: 'Third Post', 
+            previewText: 'This is our third post!', 
+            thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
+          }
+        ]});
+      ;
+    }, 1500);
+  },
+  // data(){
+  //   return {
+  //     loadedPosts: [
+
+  //     ]
+  //   }
+  // },
+  created(){
+
   }
 }
 </script>
