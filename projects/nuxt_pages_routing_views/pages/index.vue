@@ -30,7 +30,7 @@ export default{
           thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
         },
         { 
-          id: 3, 
+          id: '3', 
           title: 'Third Post', 
           previewText: 'This is our third post!', 
           thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 

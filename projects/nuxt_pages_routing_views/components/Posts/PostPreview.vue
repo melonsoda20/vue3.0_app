@@ -41,7 +41,7 @@ export default{
     },
     computed: {
       postLink(){
-        return this.propsIsAdmin ? '/admin/' + this.id : '/posts/' + this.id;
+        return this.propsIsAdmin ? '/admin/' + this.propsId : '/posts/' + this.propsId;
       }
     }
 }
