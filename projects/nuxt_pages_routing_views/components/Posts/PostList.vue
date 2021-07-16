@@ -1,23 +1,13 @@
 <template>
 <section class="post-list">
       <PostPreview
-      propsId="1"
+      v-for="(post) in propsPosts" 
+      :key="post.id"
+      :propsId="post.id"
       :propsIsAdmin="isAdmin"
-      propsThumbnail="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg"
-      propsTitle="Hello there!"
-      propsPreviewText="This is my first post" />
-      <PostPreview 
-      propsId="2"
-      :propsIsAdmin="isAdmin"
-      propsThumbnail="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg"
-      propsTitle="Hello there - second!"
-      propsPreviewText="This is my second post" />
-      <PostPreview 
-      propsId="3"
-      :propsIsAdmin="isAdmin"
-      propsThumbnail="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg"
-      propsTitle="Hello there - third!"
-      propsPreviewText="This is my third post" />
+      :propsThumbnail="post.thumbnailLink"
+      :propsTitle="post.title"
+      :propsPreviewText="post.previewText" />
     </section>
 </template>
 
@@ -32,6 +22,10 @@ export default{
       isAdmin: {
           type: Boolean,
           default: false
+      },
+      propsPosts: {
+        type: Array,
+        required: true
       }
   }
 }
