@@ -31,13 +31,16 @@ export default{
     //     }
     //   });
     // },1000);
-    return axios.get('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' + context.params.id + '.json')
+    return axios.get(process.env.baseUrl + '/posts/' + context.params.id + '.json')
       .then(res => {
         return {
           loadedPost: res.data
         }
       })
       .catch()
+  },
+  head: {
+    title: 'A Blog Post'
   }
 }
 </script>

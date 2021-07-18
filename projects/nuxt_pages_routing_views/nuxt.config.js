@@ -52,5 +52,8 @@ module.exports = {
     extend(config, ctx) {
 
     }
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app'
   }
 }

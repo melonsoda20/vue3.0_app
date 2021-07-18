@@ -46,7 +46,7 @@ const createStore = () => {
                 //         },1000);
                 //     // reject(new Error());
                 // });
-                return axios.get('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+                return axios.get(process.env.baseUrl + '/posts.json')
                     .then(res => {
                         const postsArray = [];
                         for(const key in res.data){
