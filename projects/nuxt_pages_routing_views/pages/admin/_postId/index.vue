@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import AdminPostForm from '@/components/Admin/AdminPostForm';
 
 export default{
@@ -15,15 +16,14 @@ export default{
     components: {
         AdminPostForm
     },
-    data(){
-        return {
-            loadedPost: {
-                author: 'Teddy',
-                title: 'My post',
-                content: 'Super Amazing content',
-                thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg'
-            }
-        }
+    asyncData(context){
+        return axios.get('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' + context.params.postId + '.json')
+            .then(res => {
+                return {
+                    loadedPost: res.data
+                };
+            })
+            .catch(e => context.error());
     }
 }
 </script>

@@ -15,21 +15,29 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default{
-  asyncData(context, callback){
-    setTimeout(() => {
-      callback(null,{
-        loadedPost: {
-          id: '1', 
-          title: 'First Post (ID: ' + context.params.id + ')', 
-          previewText: 'This is our first post!', 
-          author: 'Teddy',
-          updatedDate: new Date(),
-          content: 'Some dummy text',
-          thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
+  asyncData(context){
+    // setTimeout(() => {
+    //   callback(null,{
+    //     loadedPost: {
+    //       id: '1', 
+    //       title: 'First Post (ID: ' + context.params.id + ')', 
+    //       previewText: 'This is our first post!', 
+    //       author: 'Teddy',
+    //       updatedDate: new Date(),
+    //       content: 'Some dummy text',
+    //       thumbnailLink: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/mlogo/MET-70025.jpg' 
+    //     }
+    //   });
+    // },1000);
+    return axios.get('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' + context.params.id + '.json')
+      .then(res => {
+        return {
+          loadedPost: res.data
         }
-      });
-    },1000);
+      })
+      .catch()
   }
 }
 </script>
