@@ -17,12 +17,10 @@ export default{
     },
     methods: {
       onSubmitted(postData){
-        axios.post('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', {
-          ...postData, 
-          updatedDate: new Date()
-        })
-          .then(result => console.log(result))
-          .catch(e => console.log(e));
+        this.$store.dispatch('addPost', postData)
+          .then(() => {
+            this.$router.push('/admin');
+          })
       }
     }
 }
