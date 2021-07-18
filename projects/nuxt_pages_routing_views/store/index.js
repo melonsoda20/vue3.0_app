@@ -1,5 +1,4 @@
 import Vuex from 'vuex';
-import axios from 'axios';
 
 const createStore = () => {
     return new Vuex.Store({
@@ -46,15 +45,15 @@ const createStore = () => {
                 //         },1000);
                 //     // reject(new Error());
                 // });
-                return axios.get(process.env.baseUrl + '/posts.json')
-                    .then(res => {
+                return context.app.$axios.$get('/posts.json')
+                    .then(data => {
                         const postsArray = [];
-                        for(const key in res.data){
-                            postsArray.push({ ...res.data[key], id: key });
+                        for(const key in data){
+                            postsArray.push({ ...data[key], id: key });
                         }
                         vuexContext.commit('setPosts', postsArray);
                     })
-                    .catch(e => context.error(e));
+                    .catch(e => {context.error(e);});
             },
             setPosts(vuexContext, posts){
                 vuexContext.commit('setPosts', posts);
@@ -64,14 +63,14 @@ const createStore = () => {
                     ...post,
                     updatedDate: new Date()
                 };
-                return axios.post('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', createdPost)
-                    .then(result => {
-                        vuexContext.commit('addPost', { ...createdPost, id: result.data.name });
+                return this.$axios.$post('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', createdPost)
+                    .then(data => {
+                        vuexContext.commit('addPost', { ...createdPost, id: data.name });
                     })
                     .catch(e => console.log(e));
             },
             editPost(vuexContext, editedPost){
-                return axios.put('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' + editedPost.id + '.json', editedPost)
+                return this.$axios.$put('https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' + editedPost.id + '.json', editedPost)
                 .then(res => {
                     vuexContext.commit('editPost', editedPost);
                 })

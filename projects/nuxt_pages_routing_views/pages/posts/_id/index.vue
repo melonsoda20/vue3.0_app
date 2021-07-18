@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 export default{
   asyncData(context){
     // setTimeout(() => {
@@ -31,10 +31,10 @@ export default{
     //     }
     //   });
     // },1000);
-    return axios.get(process.env.baseUrl + '/posts/' + context.params.id + '.json')
-      .then(res => {
+    return this.$axios.$get('/posts/' + context.params.id + '.json')
+      .then(data => {
         return {
-          loadedPost: res.data
+          loadedPost: data
         }
       })
       .catch()
