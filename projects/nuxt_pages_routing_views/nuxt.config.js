@@ -62,7 +62,8 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app'
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-practice-2d941-default-rtdb.asia-southeast1.firebasedatabase.app',
+    fbAPIKey: 'AIzaSyBGpQWKvLU7bNHs_qK43ztlRPc25_lO9RU'
   },
   transition: {
     name: 'fade',
